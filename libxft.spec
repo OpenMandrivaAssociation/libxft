@@ -1,8 +1,11 @@
 %define libxft %mklibname xft 2
+%define develname %mklibname -d xft
+%define staticdevelname %mklibname -d -s xft
+
 Name: libxft
 Summary:  X FreeType library
 Version: 2.1.12
-Release: %mkrel 1
+Release: %mkrel 1.2
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -11,6 +14,8 @@ Source0: http://xorg.freedesktop.org/releases/individual/lib/libXft-%{version}.t
 Patch0: libXft-2.1.8.2-fixrxvtcrash.patch
 # (fc) 2.1.8.2-4mdv enable artificial embolding in Xft
 Patch1: libXft-2.1.8.2-embold.patch
+# (fwang) Patch from MagicLinux, enable embedded bitmap option in Xft
+Patch2: libXft-2.1.8-add-embeddedbitmap-and-gamma-option.patch
 BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: libfontconfig-devel >= 2.3.93
@@ -34,7 +39,7 @@ X FreeType library
 
 #-----------------------------------------------------------
 
-%package -n %{libxft}-devel
+%package -n %{develname}
 Summary: Development files for %{name}
 Group: Development/X11
 
@@ -42,18 +47,19 @@ Requires: %{libxft} = %{version}
 Requires: freetype2-devel >= 2.1.10
 Provides: xft2-devel = %{version}-%{release}
 Provides: libxft-devel = %{version}-%{release}
+Obsoletes: %libxft-devel
 
 Conflicts: libxorg-x11-devel < 7.0
 
-%description -n %{libxft}-devel
+%description -n %{develname}
 Development files for %{name}
 
-%pre -n %{libxft}-devel
+%pre -n %{develname}
 if [ -h %{_includedir}/X11 ]; then
 	rm -f %{_includedir}/X11
 fi
 
-%files -n %{libxft}-devel
+%files -n %{develname}
 %defattr(-,root,root)
 %multiarch %{multiarch_bindir}/xft-config
 %{_bindir}/xft-config
@@ -67,19 +73,20 @@ fi
 
 #-----------------------------------------------------------
 
-%package -n %{libxft}-static-devel
+%package -n %{staticdevelname}
 Summary: Static development files for %{name}
 Group: Development/X11
-Requires: %{libxft}-devel = %{version}
+Requires: %{develname} = %{version}-%{release}
 Provides: xft2-static-devel = %{version}-%{release}
 Provides: libxft-static-devel = %{version}-%{release}
+Obsoletes: %{libxft}-static-devel
 
 Conflicts: libxorg-x11-static-devel < 7.0
 
-%description -n %{libxft}-static-devel
+%description -n %{staticdevelname}
 Static development files for %{name}
 
-%files -n %{libxft}-static-devel
+%files -n %{staticdevelname}
 %defattr(-,root,root)
 %{_libdir}/libXft.a
 
@@ -89,6 +96,7 @@ Static development files for %{name}
 %setup -q -n libXft-%{version}
 %patch0 -p1 -b .fixrxvtcrash
 %patch1 -p1 -b .embold
+%patch2 -p0 -b .embeddedbitmap
 
 %build
 %configure2_5x	--x-includes=%{_includedir}\
@@ -112,5 +120,3 @@ rm -rf %{buildroot}
 %defattr(-,root,root)
 %{_libdir}/libXft.so.2
 %{_libdir}/libXft.so.2.1.2
-
-
