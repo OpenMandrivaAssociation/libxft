@@ -62,8 +62,8 @@ fi
 %{_libdir}/pkgconfig/xft.pc
 %{_includedir}/X11/Xft/Xft.h
 %{_includedir}/X11/Xft/XftCompat.h
-%{_mandir}/man1/xft-config.1.bz2
-%{_mandir}/man3/Xft.3.bz2
+%{_mandir}/man1/xft-config.*
+%{_mandir}/man3/Xft.*
 
 #-----------------------------------------------------------
 
