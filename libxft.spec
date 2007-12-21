@@ -16,6 +16,7 @@ Patch0: libXft-2.1.8.2-fixrxvtcrash.patch
 Patch1: libXft-2.1.8.2-embold.patch
 # (fwang) Patch from MagicLinux, enable embedded bitmap option in Xft
 Patch2: libXft-2.1.8-add-embeddedbitmap-and-gamma-option.patch
+BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: libfontconfig-devel >= 2.3.93
 BuildRequires: libxau-devel >= 1.0.0
