@@ -18,9 +18,10 @@ Patch1: libXft-2.1.8.2-embold.patch
 Patch2: libXft-2.1.8-add-embeddedbitmap-and-gamma-option.patch
 BuildRoot: %{_tmppath}/%{name}-root
 
-BuildRequires: x11-util-macros		>= 1.1.5
-BuildRequires: libfontconfig-devel	>= 2.5.0
-BuildRequires: libxrender-devel		>= 0.9.4
+BuildRequires: libfontconfig-devel >= 2.3.93
+BuildRequires: libxau-devel >= 1.0.0
+BuildRequires: libxrender-devel >= 0.9.0.2
+BuildRequires: x11-util-macros >= 1.0.1
 
 %description
 X FreeType library
@@ -98,7 +99,7 @@ Static development files for %{name}
 %patch2 -p0 -b .embeddedbitmap
 
 %build
-%configure	--x-includes=%{_includedir}\
+%configure2_5x	--x-includes=%{_includedir}\
 		--x-libraries=%{_libdir}
 
 %make
