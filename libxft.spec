@@ -113,8 +113,12 @@ rm -rf %{buildroot}
 %clean
 rm -rf %{buildroot}
 
+%if %mdkversion < 200900
 %post -n %{libxft} -p /sbin/ldconfig
+%endif
+%if %mdkversion < 200900
 %postun -n %{libxft} -p /sbin/ldconfig
+%endif
 
 %files -n %{libxft}
 %defattr(-,root,root)
