@@ -4,14 +4,12 @@
 
 Name: libxft
 Summary:  X FreeType library
-Version: 2.1.12
-Release: %mkrel 5
+Version: 2.1.13
+Release: %mkrel 1
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXft-%{version}.tar.bz2
-# (fc) 2.1.8.2-4mdv fix crash with rxvt-unicode
-Patch0: libXft-2.1.8.2-fixrxvtcrash.patch
 # (fc) 2.1.8.2-4mdv enable artificial embolding in Xft
 Patch1: libXft-2.1.8.2-embold.patch
 # (fwang) Patch from MagicLinux, enable embedded bitmap option in Xft
@@ -94,7 +92,6 @@ Static development files for %{name}
 
 %prep
 %setup -q -n libXft-%{version}
-%patch0 -p1 -b .fixrxvtcrash
 %patch1 -p1 -b .embold
 %patch2 -p0 -b .embeddedbitmap
 
@@ -123,4 +120,4 @@ rm -rf %{buildroot}
 %files -n %{libxft}
 %defattr(-,root,root)
 %{_libdir}/libXft.so.2
-%{_libdir}/libXft.so.2.1.2
+%{_libdir}/libXft.so.%{version}
