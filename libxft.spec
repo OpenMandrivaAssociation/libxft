@@ -10,10 +10,11 @@ Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
 Source0: http://xorg.freedesktop.org/releases/individual/lib/libXft-%{version}.tar.bz2
-# (fc) 2.1.8.2-4mdv enable artificial embolding in Xft
-Patch1: libXft-2.1.8.2-embold.patch
 # (fwang) Patch from MagicLinux, enable embedded bitmap option in Xft
-Patch2: libXft-2.1.8-add-embeddedbitmap-and-gamma-option.patch
+# (pzanoni): disabled as the 2.1.14 release seems to integrate part of it in a
+# different way
+#Patch1: libXft-2.1.8-add-embeddedbitmap-and-gamma-option.patch
+Patch1: libXft-2.1.14-fix-library-version.patch
 BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: libfontconfig-devel >= 2.3.93
@@ -92,8 +93,8 @@ Static development files for %{name}
 
 %prep
 %setup -q -n libXft-%{version}
-%patch1 -p1 -b .embold
-%patch2 -p0 -b .embeddedbitmap
+#%patch1 -p0 -b .embeddedbitmap
+%patch1 -p1 -b .libversion
 
 %build
 %configure2_5x	--x-includes=%{_includedir}\
