@@ -14,7 +14,6 @@ Source0: http://xorg.freedesktop.org/releases/individual/lib/libXft-%{version}.t
 # (pzanoni): disabled as the 2.1.14 release seems to integrate part of it in a
 # different way
 #Patch1: libXft-2.1.8-add-embeddedbitmap-and-gamma-option.patch
-Patch1: libXft-2.1.14-fix-library-version.patch
 BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: libfontconfig-devel >= 2.3.93
@@ -94,7 +93,6 @@ Static development files for %{name}
 %prep
 %setup -q -n libXft-%{version}
 #%patch1 -p0 -b .embeddedbitmap
-%patch1 -p1 -b .libversion
 
 %build
 %configure2_5x	--x-includes=%{_includedir}\
