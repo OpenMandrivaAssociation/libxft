@@ -59,14 +59,11 @@ fi
 
 %files -n %{develname}
 %defattr(-,root,root)
-%multiarch %{multiarch_bindir}/xft-config
-%{_bindir}/xft-config
 %{_libdir}/libXft.so
 %{_libdir}/libXft.la
 %{_libdir}/pkgconfig/xft.pc
 %{_includedir}/X11/Xft/Xft.h
 %{_includedir}/X11/Xft/XftCompat.h
-%{_mandir}/man1/xft-config.*
 %{_mandir}/man3/Xft.*
 
 #-----------------------------------------------------------
@@ -103,8 +100,6 @@ Static development files for %{name}
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-%multiarch_binaries %{buildroot}%{_bindir}/xft-config
 
 %clean
 rm -rf %{buildroot}
