@@ -9,6 +9,7 @@
 # make EVR of plf build higher than regular to allow update, needed with rpm5 mkrel
 %define extrarelsuffix plf
 %endif
+%endif
 
 Name: libxft
 Summary:  X FreeType library
