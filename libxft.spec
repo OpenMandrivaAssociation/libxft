@@ -1,11 +1,19 @@
 %define libxft %mklibname xft 2
 %define develname %mklibname -d xft
 %define staticdevelname %mklibname -d -s xft
+%define build_plf 0
+
+%if %build_plf
+%define distsuffix plf
+%if %mdvver >= 201100
+# make EVR of plf build higher than regular to allow update, needed with rpm5 mkrel
+%define extrarelsuffix plf
+%endif
 
 Name: libxft
 Summary:  X FreeType library
 Version: 2.2.0
-Release: %mkrel 1
+Release: %mkrel 2%{?extrarelsuffix}
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -14,6 +22,9 @@ Source0: http://xorg.freedesktop.org/releases/individual/lib/libXft-%{version}.t
 # (pzanoni): disabled as the 2.1.14 release seems to integrate part of it in a
 # different way
 #Patch1: libXft-2.1.8-add-embeddedbitmap-and-gamma-option.patch
+%if %build_plf
+Patch2:	libXft-2.1.14-lcd-cleartype.patch
+%endif
 BuildRoot: %{_tmppath}/%{name}-root
 
 BuildRequires: libfontconfig-devel >= 2.3.93
@@ -90,6 +101,9 @@ Static development files for %{name}
 %prep
 %setup -q -n libXft-%{version}
 #%patch1 -p0 -b .embeddedbitmap
+%if %build_plf
+%patch2 -p1
+%endif
 
 %build
 %configure2_5x	--x-includes=%{_includedir}\
