@@ -14,7 +14,7 @@
 Name: libxft
 Summary:  X FreeType library
 Version: 2.2.0
-Release: 4%{?extrarelsuffix}
+Release: 5%{?extrarelsuffix}
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -49,7 +49,8 @@ Summary: Development files for %{name}
 Group: Development/X11
 Requires: %{libname} = %{version}-%{release}
 Provides: %{name}-devel = %{version}-%{release}
-Obsoletes: %{libname}-devel
+Obsoletes: %{_lib}xft2-devel
+Obsoletes: %{_lib}xft-static-devel
 Conflicts: libxorg-x11-devel < 7.0
 
 %description -n %{develname}
@@ -72,7 +73,6 @@ Development files for %{name}
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-find %{buildroot} -name "*.la" -delete
 
 %pre -n %{develname}
 if [ -h %{_includedir}/X11 ]; then
