@@ -14,7 +14,7 @@
 Name: libxft
 Summary:  X FreeType library
 Version: 2.2.0
-Release: 5%{?extrarelsuffix}
+Release: 6%{?extrarelsuffix}
 Group: Development/X11
 License: MIT
 URL: http://xorg.freedesktop.org
@@ -73,11 +73,6 @@ Development files for %{name}
 %install
 rm -rf %{buildroot}
 %makeinstall_std
-
-%pre -n %{develname}
-if [ -h %{_includedir}/X11 ]; then
-	rm -f %{_includedir}/X11
-fi
 
 %files -n %{libname}
 %{_libdir}/libXft.so.%{major}*
