@@ -13,7 +13,7 @@
 
 Name: libxft
 Summary:  X FreeType library
-Version: 2.3.0
+Version: 2.3.1
 Release: 1%{?extrarelsuffix}
 Group: Development/X11
 License: MIT
@@ -33,7 +33,7 @@ BuildRequires: pkgconfig(xrender) >= 0.9.0.2
 BuildRequires: x11-util-macros >= 1.0.1
 
 %description
-X FreeType library
+X FreeType library.
 
 %package -n %{libname}
 Summary:  X FreeType library
@@ -42,7 +42,7 @@ Conflicts: libxorg-x11 < 7.0
 Provides: %{name} = %{version}-%{release}
 
 %description -n %{libname}
-X FreeType library
+X FreeType library.
 
 %package -n %{develname}
 Summary: Development files for %{name}
@@ -54,7 +54,7 @@ Obsoletes: %{_lib}xft-static-devel
 Conflicts: libxorg-x11-devel < 7.0
 
 %description -n %{develname}
-Development files for %{name}
+Development files for %{name}.
 
 %prep
 %setup -qn libXft-%{version}
@@ -71,7 +71,6 @@ Development files for %{name}
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall_std
 
 %files -n %{libname}
