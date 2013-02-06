@@ -2,40 +2,41 @@
 %define libname %mklibname xft %{major}
 %define develname %mklibname -d xft
 
-Name: libxft
-Summary:  X FreeType library
-Version: 2.3.1
-Release: 2
-Group: Development/X11
-License: MIT
-URL: http://xorg.freedesktop.org
-Source0: http://xorg.freedesktop.org/releases/individual/lib/libXft-%{version}.tar.bz2
+Name:		libxft
+Summary:	X FreeType library
+Version:	2.3.1
+Release:	3
+Group:		Development/X11
+License:	MIT
+URL:		http://xorg.freedesktop.org
+Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXft-%{version}.tar.bz2
 
-BuildRequires: pkgconfig(fontconfig) >= 2.3.93
-BuildRequires: pkgconfig(xau) >= 1.0.0
-BuildRequires: pkgconfig(xrender) >= 0.9.0.2
-BuildRequires: x11-util-macros >= 1.0.1
+BuildRequires:	pkgconfig(fontconfig) >= 2.3.93
+BuildRequires:	pkgconfig(xau) >= 1.0.0
+BuildRequires:	pkgconfig(xrender) >= 0.9.0.2
+BuildRequires:	x11-util-macros >= 1.0.1
 
 %description
 X FreeType library.
 
 %package -n %{libname}
-Summary:  X FreeType library
-Group: Development/X11
-Conflicts: libxorg-x11 < 7.0
-Provides: %{name} = %{version}-%{release}
+Summary:	X FreeType library
+Group:		Development/X11
+Conflicts:	libxorg-x11 < 7.0
+Provides:	%{name} = %{version}-%{release}
+Requires:	fontconfig
 
 %description -n %{libname}
 X FreeType library.
 
 %package -n %{develname}
-Summary: Development files for %{name}
-Group: Development/X11
-Requires: %{libname} = %{version}-%{release}
-Provides: %{name}-devel = %{version}-%{release}
-Obsoletes: %{_lib}xft2-devel < 2.3.1
-Obsoletes: %{_lib}xft-static-devel < 2.3.1
-Conflicts: libxorg-x11-devel < 7.0
+Summary:	Development files for %{name}
+Group:		Development/X11
+Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
+Obsoletes:	%{_lib}xft2-devel < 2.3.1
+Obsoletes:	%{_lib}xft-static-devel < 2.3.1
+Conflicts:	libxorg-x11-devel < 7.0
 
 %description -n %{develname}
 Development files for %{name}.
