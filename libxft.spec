@@ -4,8 +4,8 @@
 
 Summary:	X FreeType library
 Name:		libxft
-Version:	2.3.1
-Release:	8
+Version:	2.3.2
+Release:	1
 Group:		Development/X11
 License:	MIT
 Url:		http://xorg.freedesktop.org
@@ -40,7 +40,7 @@ Development files for %{name}.
 %setup -qn libXft-%{version}
 
 %build
-%configure2_5x	\
+%configure	\
 	--disable-static \
 	--x-includes=%{_includedir} \
 	--x-libraries=%{_libdir}
