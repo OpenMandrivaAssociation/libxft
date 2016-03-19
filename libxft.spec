@@ -5,7 +5,7 @@
 Summary:	X FreeType library
 Name:		libxft
 Version:	2.3.2
-Release:	7
+Release:	8
 License:	MIT
 Group:		Development/X11
 Url:		http://xorg.freedesktop.org
