@@ -12,7 +12,7 @@
 
 Summary:	X FreeType library
 Name:		libxft
-Version:	2.3.3
+Version:	2.3.4
 Release:	1
 License:	MIT
 Group:		Development/X11
