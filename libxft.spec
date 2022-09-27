@@ -12,12 +12,12 @@
 
 Summary:	X FreeType library
 Name:		libxft
-Version:	2.3.4
+Version:	2.3.6
 Release:	1
 License:	MIT
 Group:		Development/X11
 Url:		http://xorg.freedesktop.org
-Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXft-%{version}.tar.bz2
+Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXft-%{version}.tar.xz
 BuildRequires:	pkgconfig(fontconfig)
 BuildRequires:	pkgconfig(freetype2)
 BuildRequires:	pkgconfig(xau)
@@ -71,7 +71,7 @@ Development files for %{name}.
 %{_libdir}/pkgconfig/xft.pc
 %{_includedir}/X11/Xft/Xft.h
 %{_includedir}/X11/Xft/XftCompat.h
-%{_mandir}/man3/Xft.*
+%{_mandir}/man3/Xft*.*
 
 #----------------------------------------------------------------------------
 
