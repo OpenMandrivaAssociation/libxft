@@ -12,7 +12,7 @@
 
 Summary:	X FreeType library
 Name:		libxft
-Version:	2.3.6
+Version:	2.3.7
 Release:	1
 License:	MIT
 Group:		Development/X11
@@ -71,7 +71,7 @@ Development files for %{name}.
 %{_libdir}/pkgconfig/xft.pc
 %{_includedir}/X11/Xft/Xft.h
 %{_includedir}/X11/Xft/XftCompat.h
-%{_mandir}/man3/Xft*.*
+%doc %{_mandir}/man3/Xft*.*
 
 #----------------------------------------------------------------------------
 
