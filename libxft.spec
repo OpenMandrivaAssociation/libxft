@@ -16,7 +16,7 @@ Version:	2.3.8
 Release:	1
 License:	MIT
 Group:		Development/X11
-Url:		http://xorg.freedesktop.org
+Url:		https://xorg.freedesktop.org
 Source0:	http://xorg.freedesktop.org/releases/individual/lib/libXft-%{version}.tar.xz
 BuildRequires:	pkgconfig(fontconfig)
 BuildRequires:	pkgconfig(freetype2)
